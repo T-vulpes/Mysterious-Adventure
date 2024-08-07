@@ -99,7 +99,7 @@ const gameData = {
         },
         {
             story: "Sağ yol sizi güçlü akıntısı olan bir nehre götürüyor. Nehri geçemezsiniz. Geri dönüp başka bir yol denemelisiniz.",
-            choices: []  // Seçim yok
+            choices: []  
         },
         {
             story: "Sol yolu seçiyorsunuz ve terkedilmiş bir kamp alanı buluyorsunuz. Dağılmış eşyaların arasında, üzerinde bir kodun parçası olan yırtık bir kağıt parçası buluyorsunuz: 'es'.\nBunu saklamaya karar verip yolculuğunuza devam ediyorsunuz.",
