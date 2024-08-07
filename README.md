@@ -1,4 +1,7 @@
-# Mysterious-Adventure  <simple>
+
+# Mysterious-Adventure  (simple)
+
+[Demo](https://t-vulpes.github.io/Mysterious-Adventure/) 
 
 Welcome to the Mysterious Adventure game! This is a text-based adventure game where you navigate through a forest, gather clues, and eventually escape to safety. The game is available in both English and Turkish.
 
@@ -14,7 +17,7 @@ In this game, you find yourself in a dense forest with no memory of how you got 
 - `clear`: Clear the game screen.
 - `help`: Display a list of available commands.
 
-# Gizemli-Macera <basit>
+# Gizemli-Macera basit
 
 Gizemli Macera oyununa hoş geldiniz! Bu, bir ormanda gezindiğiniz, ipuçları topladığınız ve sonunda güvenliğe kaçtığınız metin tabanlı bir macera oyunudur. Oyun hem İngilizce hem de Türkçe olarak mevcuttur.
 
