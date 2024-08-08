@@ -99,7 +99,7 @@ const gameData = {
         },
         {
             story: "Sağ yol sizi güçlü akıntısı olan bir nehre götürüyor. Nehri geçemezsiniz. Geri dönüp başka bir yol denemelisiniz.",
-            choices: []  
+            choices: []  // Seçim yok
         },
         {
             story: "Sol yolu seçiyorsunuz ve terkedilmiş bir kamp alanı buluyorsunuz. Dağılmış eşyaların arasında, üzerinde bir kodun parçası olan yırtık bir kağıt parçası buluyorsunuz: 'es'.\nBunu saklamaya karar verip yolculuğunuza devam ediyorsunuz.",
@@ -117,41 +117,41 @@ const gameData = {
         },
         {
             story: "Yaşlı adamın yardımını reddedip ilerlemeye devam ediyorsunuz. Ancak, yoğun ormanda kayboluyorsunuz ve çıkışı bulamıyorsunuz. Geri dönüp başka bir yol denemelisiniz.",
-            choices: []  
+            choices: []  // Seçim yok
         },
         {
             story: "Yaşlı adama yol tarifini soruyorsunuz. Kafa karıştırıcı talimatlar veriyor ve daireler çizerek dolanıyorsunuz. Geri dönüp başka bir yol denemelisiniz.",
-            choices: []  
+            choices: []  // Seçim yok
         },
         {
             story: "Sol yol sizi dik bir uçuruma götürüyor. Aşağı inemezsiniz. Geri dönüp başka bir yol denemelisiniz.",
-            choices: []  
+            choices: []  // Seçim yok
         },
         {
             story: "Orta yol sizi kumdan bir bataklığa götürüyor. Geçemezsiniz. Geri dönüp başka bir yol denemelisiniz.",
-            choices: []  
+            choices: []  // Seçim yok
         },
         {
             story: "Sağ yol sizi ormanın kenarına götürüyor. Şifreli bir kilidi olan bir sığınak görüyorsunuz. Açmak için doğru şifreyi bulmanız gerekiyor. Sadece bir kısmını biliyorsunuz: 'es'.\nŞifrenin geri kalanını bulmalısınız.",
             choices: [
-                { text: "Etrafı ara", correct: true, next: 10 }  
+                { text: "Etrafı ara", correct: true, next: 10 }  // Etrafı ara
             ]
         },
         {
             story: "Sığınağın etrafını arıyorsunuz ve şifrenin geri kalan kısmını buluyorsunuz: 'cape'. Şimdi tam şifrenin bir kısmına sahipsiniz: 'escape'.\nŞifreyi tamamen bulmalısınız.",
             choices: [
-                { text: "Daha derin arama yap", correct: true, next: 11 }  
+                { text: "Daha derin arama yap", correct: true, next: 11 }  // Daha derin arama yap
             ]
         },
         {
             story: "Sığınağın etrafında daha derin arama yapıyorsunuz ve şifrenin son parçasını buluyorsunuz: '2024'. Şimdi tam şifreye sahipsiniz: 'escape2024'.\nŞifreyi girip kaçabilirsiniz.",
             choices: [
-                { text: "Şifreyi gir", correct: true, next: 12 }  
+                { text: "Şifreyi gir", correct: true, next: 12 }  // Şifreyi gir
             ]
         },
         {
             story: "Şifreyi başarıyla giriyorsunuz ve sığınağın kapısı açılıyor. İçeride bir radyo buluyorsunuz ve polisi çağırıyorsunuz. Kısa süre sonra polisler gelip sizi kurtarıyor. Tebrikler! Ormandan kurtuldunuz.",
-            choices: 
+            choices: []  // Seçim yok
         }
     ]
 };
@@ -189,12 +189,19 @@ function showStage() {
     } else {
         const stage = gameData[selectedLanguage][currentStage];
         typeEffect(stage.story, () => {
-            stage.choices.forEach((choice) => {
-                const button = document.createElement('button');
-                button.textContent = choice.text;
-                button.onclick = () => handleChoice(choice.correct, choice.next);
-                choicesElement.appendChild(button);
-            });
+            if (stage.choices.length > 0) {
+                stage.choices.forEach((choice) => {
+                    const button = document.createElement('button');
+                    button.textContent = choice.text;
+                    button.onclick = () => handleChoice(choice.correct, choice.next);
+                    choicesElement.appendChild(button);
+                });
+            } else {
+                // Seçim yoksa bile mevcut hikaye gösterilmeye devam eder
+                setTimeout(() => {
+                    typeEffect("\nThere are no choices available. You must go back and try another path.");
+                }, 500);
+            }
         });
 
         if (currentStage === 12) {
@@ -204,6 +211,7 @@ function showStage() {
         }
     }
 }
+
 
 function handleChoice(isCorrect, nextStage) {
     if (isCorrect) {
