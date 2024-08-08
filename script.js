@@ -194,7 +194,7 @@ function showStage() {
                     choicesElement.appendChild(button);
                 });
             } else {
-                // Seçim yoksa bile mevcut hikaye gösterilmeye devam eder
+                
                 setTimeout(() => {
                     typeEffect("\nThere are no choices available. You must go back and try another path.");
                 }, 500);
