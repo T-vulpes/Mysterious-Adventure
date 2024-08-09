@@ -1,5 +1,5 @@
 
-# Mysterious-Adventure  (simple)
+# Mysterious-Adventure  
 
 [Demo](https://t-vulpes.github.io/Mysterious-Adventure/) 
 
